@@ -121,9 +121,7 @@ mcp = FastMCP(
     json_response=True,
     streamable_http_path="/",
     transport_security=TransportSecuritySettings(
-        allowed_hosts=["*"] if get_settings().mcp_allowed_hosts == "*"
-        else [h.strip() for h in get_settings().mcp_allowed_hosts.split(",")],
-        allowed_origins=["*"] if get_settings().mcp_allowed_hosts == "*" else [],
+        enable_dns_rebinding_protection=False,
     ),
 )
 
