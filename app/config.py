@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     shipment_delay_threshold_hours: int = Field(default=24, alias="SHIPMENT_DELAY_THRESHOLD_HOURS")
     low_stock_threshold: int = Field(default=10, alias="LOW_STOCK_THRESHOLD")
 
+    # Comma-separated allowed hosts for MCP DNS rebinding protection.
+    # Set to "*" to allow all (safe behind Render/Cloudflare HTTPS).
+    mcp_allowed_hosts: str = Field(default="*", alias="MCP_ALLOWED_HOSTS")
+
 
 @lru_cache
 def get_settings() -> Settings:
